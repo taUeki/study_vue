@@ -1,23 +1,37 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <p><button v-on:click="increment">UP</button>
+    <h1>Count:{{ count }}</h1>
+    <button @click="handleClickNaito">内藤哲也</button>
+    <button @click="handleClickTanahashi">棚橋弘至</button>
   </div>
 </template>
 
 <script>
+
 export default {
-  name: 'App'
+  name: 'app',
+  methods: {
+    increment: function () {
+      this.$store.commit('increment', 3)
+    },
+    handleClickNaito: function () {
+      alert('トランキーロ！！焦んなよ！！！')
+    },
+    handleClickTanahashi: function () {
+      alert('愛してまーす！！！')
+    }
+  },
+  computed: {
+    message () {
+      return this.$store.getters.message
+    },
+    count () {
+      return this.$store.getters.count
+    },
+    list: function () {
+      return this.$store.state.list
+    }
+  }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
