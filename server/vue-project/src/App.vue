@@ -4,13 +4,16 @@
     <h1>Count:{{ count }}</h1>
     <button @click="handleClickNaito">内藤哲也</button>
     <button @click="handleClickTanahashi">棚橋弘至</button>
+    <p>{{ message }}</p>
+    <EditForm />
   </div>
 </template>
 
 <script>
-
+import EditForm from '@/components/EditForm.vue'
 export default {
   name: 'app',
+  components: { EditForm },
   methods: {
     increment: function () {
       this.$store.commit('increment', 3)

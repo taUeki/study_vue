@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    messsage: '初期メッセージ',
+    message: '初期メッセージ',
     count: 0,
     name: 'キマイラ',
     list: [
@@ -15,8 +15,8 @@ export default new Vuex.Store({
     ]
   },
   getters: {
-    messsage (state) {
-      return state.messsage
+    message (state) {
+      return state.message
     },
     count (state) {
       return state.count
@@ -24,13 +24,10 @@ export default new Vuex.Store({
   },
   mutations: {
     setMessage (state, payload) {
-      state.messsage = payload.message
+      state.message = payload.message
     },
     increment: function (state, number) {
       state.count = state.count + number
-    },
-    doAdd: function (state, array) {
-      state.list.push(array)
     }
   },
   actions: {
