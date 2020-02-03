@@ -1,5 +1,8 @@
 <template>
   <div id="app">
+    <router-link to="/">Home</router-link>
+    <router-link to="/product">商品情報</router-link>
+    <router-view></router-view>
     <p><button v-on:click="increment">UP</button>
     <h1>Count:{{ count }}</h1>
     <button @click="handleClickNaito">内藤哲也</button>
@@ -37,4 +40,5 @@ export default {
     }
   }
 }
+console.log('aaaaa')
 </script>

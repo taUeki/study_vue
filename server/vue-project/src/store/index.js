@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import moduleA from './modules/moduleA'
+import moduleB from './modules/moduleB'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -34,5 +35,13 @@ export default new Vuex.Store({
     doUpdate ({ commit }, message) {
       commit('setMessage', { message })
     }
+  },
+  modules: {
+    moduleA: moduleA,
+    moduleB: moduleB
   }
 })
+
+// console.log(state.moduleA.count)
+// console.log(moduleB.count)
+// console.log('aaaaa')
