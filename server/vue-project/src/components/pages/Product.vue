@@ -1,32 +1,29 @@
 <template>
     <div class="product" v-if="item" key="priduct">
-        <h1>商品情報</h1>
-        <dl class="product-table">
-            <dt>商品名</dt><dd>{{ item.name }}</dd>
-            <dt>価格</dt><dd>{{ item.price }}</dd>
-            <dt>商品説明</dt><dd>{{ item.content }}</dd>
-        </dl>
+        <h1>{{ detail.name }}</h1>
+        <nav class="nav">
+          <router-link :to="{ name: 'product-home' }">商品詳細</router-link>
+          <router-link :to="{ name: 'product-review' }">レビュー</router-link>
+        </nav>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-import products from '@/api/products.js'
+import { mapGetters } from 'vuex'
 export default {
   props: { id: Number },
-  data () {
-    return {
-      item: null
-    }
-  },
+  computed: mapGetters('product', ['detail']),
   watch: {
     id: {
       handler () {
-        products.asyncFind(this.id, item => {
-          this.item = item
-        })
+        this.$store.dispatch('product/load', this.id)
       },
       immediate: true
     }
+  },
+  beforeDestroy () {
+    this.$store.dispatch('product/destroy')
   }
 }
 </script>
